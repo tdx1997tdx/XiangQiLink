@@ -1,0 +1,22 @@
+# Build
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 运行时生成
+logs/
+debug/
+err.log
+
+# 发布目录
+Engines/
+Models/
+OpenBooks/
+Solutions/*/AutoClick/
+
+# IDE
+.vs/
+.vscode/
