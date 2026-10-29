@@ -1034,7 +1034,7 @@
             // 
             this.toolStripStatusLabel_info.Name = "toolStripStatusLabel_info";
             this.toolStripStatusLabel_info.Size = new System.Drawing.Size(424, 20);
-            this.toolStripStatusLabel_info.Text = "象棋连线助手 v1.4.7                                    ";
+            this.toolStripStatusLabel_info.Text = "象棋连线助手 v1.4.8                                    ";
             // 
             // label_detection_status
             // 
