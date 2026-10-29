@@ -81,6 +81,14 @@
             this.comboBox_yolo_models = new System.Windows.Forms.ComboBox();
             this.button_redetect = new System.Windows.Forms.Button();
             this.tableLayoutPanel_think_detail = new System.Windows.Forms.TableLayoutPanel();
+            this.listView_candidates = new System.Windows.Forms.ListView();
+            this.columnHeader_cand_no = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_cand_move = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_cand_score = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_cand_depth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_cand_state = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader_cand_pv = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button_force_change = new System.Windows.Forms.Button();
             this.textBox_engine_log = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.byVincentzyxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -415,6 +423,7 @@
             this.groupBox5.Controls.Add(this.button_start_from_self);
             this.groupBox5.Controls.Add(this.checkBox_analyze_mode);
             this.groupBox5.Controls.Add(this.button_go_immediately);
+            this.groupBox5.Controls.Add(this.button_force_change);
             this.groupBox5.Location = new System.Drawing.Point(235, 24);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(143, 194);
@@ -424,7 +433,7 @@
             // 
             // button_stop_detection
             // 
-            this.button_stop_detection.Location = new System.Drawing.Point(24, 103);
+            this.button_stop_detection.Location = new System.Drawing.Point(24, 90);
             this.button_stop_detection.Name = "button_stop_detection";
             this.button_stop_detection.Size = new System.Drawing.Size(98, 28);
             this.button_stop_detection.TabIndex = 3;
@@ -435,7 +444,7 @@
             // 
             // button_start_from_oppo
             // 
-            this.button_start_from_oppo.Location = new System.Drawing.Point(24, 69);
+            this.button_start_from_oppo.Location = new System.Drawing.Point(24, 62);
             this.button_start_from_oppo.Name = "button_start_from_oppo";
             this.button_start_from_oppo.Size = new System.Drawing.Size(98, 28);
             this.button_start_from_oppo.TabIndex = 2;
@@ -447,7 +456,7 @@
             // 
             // button_start_from_self
             // 
-            this.button_start_from_self.Location = new System.Drawing.Point(24, 35);
+            this.button_start_from_self.Location = new System.Drawing.Point(24, 28);
             this.button_start_from_self.Name = "button_start_from_self";
             this.button_start_from_self.Size = new System.Drawing.Size(98, 28);
             this.button_start_from_self.TabIndex = 1;
@@ -458,7 +467,7 @@
             // 
             // button_go_immediately
             // 
-            this.button_go_immediately.Location = new System.Drawing.Point(24, 137);
+            this.button_go_immediately.Location = new System.Drawing.Point(24, 123);
             this.button_go_immediately.Name = "button_go_immediately";
             this.button_go_immediately.Size = new System.Drawing.Size(98, 28);
             this.button_go_immediately.TabIndex = 14;
@@ -466,6 +475,17 @@
             this.button_go_immediately.Text = "立即出招";
             this.button_go_immediately.UseVisualStyleBackColor = true;
             this.button_go_immediately.Click += new System.EventHandler(this.button_go_immediately_Click);
+            // 
+            // button_force_change
+            // 
+            this.button_force_change.Location = new System.Drawing.Point(24, 156);
+            this.button_force_change.Name = "button_force_change";
+            this.button_force_change.Size = new System.Drawing.Size(98, 28);
+            this.button_force_change.TabIndex = 15;
+            this.button_force_change.TabStop = false;
+            this.button_force_change.Text = "强制变招";
+            this.button_force_change.UseVisualStyleBackColor = true;
+            this.button_force_change.Click += new System.EventHandler(this.button_force_change_Click);
             // 
             // groupBox4
             // 
@@ -588,7 +608,7 @@
             // checkBox_analyze_mode
             // 
             this.checkBox_analyze_mode.AutoSize = false;
-            this.checkBox_analyze_mode.Location = new System.Drawing.Point(24, 69);
+            this.checkBox_analyze_mode.Location = new System.Drawing.Point(24, 64);
             this.checkBox_analyze_mode.Name = "checkBox_analyze_mode";
             this.checkBox_analyze_mode.Size = new System.Drawing.Size(120, 20);
             this.checkBox_analyze_mode.TabIndex = 21;
@@ -787,24 +807,80 @@
             // 
             this.tableLayoutPanel_think_detail.ColumnCount = 1;
             this.tableLayoutPanel_think_detail.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_think_detail.Controls.Add(this.textBox_engine_log, 0, 0);
+            this.tableLayoutPanel_think_detail.Controls.Add(this.listView_candidates, 0, 0);
+            this.tableLayoutPanel_think_detail.Controls.Add(this.textBox_engine_log, 0, 1);
             this.tableLayoutPanel_think_detail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_think_detail.Location = new System.Drawing.Point(3, 382);
             this.tableLayoutPanel_think_detail.Name = "tableLayoutPanel_think_detail";
-            this.tableLayoutPanel_think_detail.RowCount = 1;
+            this.tableLayoutPanel_think_detail.RowCount = 2;
+            this.tableLayoutPanel_think_detail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel_think_detail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_think_detail.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 279F));
             this.tableLayoutPanel_think_detail.Size = new System.Drawing.Size(725, 279);
             this.tableLayoutPanel_think_detail.TabIndex = 30;
+            // 
+            // listView_candidates
+            // 
+            this.listView_candidates.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader_cand_no,
+            this.columnHeader_cand_move,
+            this.columnHeader_cand_score,
+            this.columnHeader_cand_depth,
+            this.columnHeader_cand_state,
+            this.columnHeader_cand_pv});
+            this.listView_candidates.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView_candidates.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.listView_candidates.FullRowSelect = true;
+            this.listView_candidates.GridLines = true;
+            this.listView_candidates.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView_candidates.HideSelection = false;
+            this.listView_candidates.Location = new System.Drawing.Point(3, 3);
+            this.listView_candidates.MultiSelect = false;
+            this.listView_candidates.Name = "listView_candidates";
+            this.listView_candidates.Size = new System.Drawing.Size(719, 144);
+            this.listView_candidates.TabIndex = 38;
+            this.listView_candidates.TabStop = false;
+            this.listView_candidates.UseCompatibleStateImageBehavior = false;
+            this.listView_candidates.View = System.Windows.Forms.View.Details;
+            this.listView_candidates.SelectedIndexChanged += new System.EventHandler(this.listView_candidates_SelectedIndexChanged);
+            // 
+            // columnHeader_cand_no
+            // 
+            this.columnHeader_cand_no.Text = "#";
+            this.columnHeader_cand_no.Width = 32;
+            // 
+            // columnHeader_cand_move
+            // 
+            this.columnHeader_cand_move.Text = "候选招";
+            this.columnHeader_cand_move.Width = 90;
+            // 
+            // columnHeader_cand_score
+            // 
+            this.columnHeader_cand_score.Text = "得分";
+            this.columnHeader_cand_score.Width = 76;
+            // 
+            // columnHeader_cand_depth
+            // 
+            this.columnHeader_cand_depth.Text = "深度";
+            this.columnHeader_cand_depth.Width = 48;
+            // 
+            // columnHeader_cand_state
+            // 
+            this.columnHeader_cand_state.Text = "状态";
+            this.columnHeader_cand_state.Width = 64;
+            // 
+            // columnHeader_cand_pv
+            // 
+            this.columnHeader_cand_pv.Text = "后续变化";
+            this.columnHeader_cand_pv.Width = 380;
             // 
             // textBox_engine_log
             // 
             this.textBox_engine_log.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox_engine_log.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox_engine_log.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.textBox_engine_log.Location = new System.Drawing.Point(3, 3);
+            this.textBox_engine_log.Location = new System.Drawing.Point(3, 153);
             this.textBox_engine_log.Name = "textBox_engine_log";
-            this.textBox_engine_log.Size = new System.Drawing.Size(719, 273);
+            this.textBox_engine_log.Size = new System.Drawing.Size(719, 123);
             this.textBox_engine_log.TabIndex = 37;
             this.textBox_engine_log.TabStop = false;
             this.textBox_engine_log.Text = "";
@@ -1020,6 +1096,14 @@
         private System.Windows.Forms.Button button_clipboard_solution;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_engine_management;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_openbook_management;
+        private System.Windows.Forms.Button button_force_change;
+        private System.Windows.Forms.ListView listView_candidates;
+        private System.Windows.Forms.ColumnHeader columnHeader_cand_no;
+        private System.Windows.Forms.ColumnHeader columnHeader_cand_move;
+        private System.Windows.Forms.ColumnHeader columnHeader_cand_score;
+        private System.Windows.Forms.ColumnHeader columnHeader_cand_depth;
+        private System.Windows.Forms.ColumnHeader columnHeader_cand_state;
+        private System.Windows.Forms.ColumnHeader columnHeader_cand_pv;
     }
 }
 

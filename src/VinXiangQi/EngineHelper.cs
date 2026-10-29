@@ -313,7 +313,8 @@ namespace VinXiangQi
             }
         }
 
-        public void StartAnalyze(string fen, double time_sec, int depth)
+        // 强制变招：UCI 引擎用 searchMoves（只在这些着法里挑），UCCI 引擎用 banMoves（禁走这些着法）
+        public void StartAnalyze(string fen, double time_sec, int depth, IList<string> searchMoves = null, IList<string> banMoves = null)
         {
             if (Engine == null || Engine.Handle == IntPtr.Zero || Engine.HasExited)
             {
@@ -323,18 +324,28 @@ namespace VinXiangQi
             LogHelper.Log("引擎分析请求: " + fen);
             Debug.WriteLine("Start Analyzing: \n" + fen);
             SendCommand("position fen " + fen);
-            if (BanMoves != "")
+            if (EngineType == "ucci" && banMoves != null && banMoves.Count > 0)
+            {
+                SendCommand("banmoves " + string.Join(" ", banMoves));
+                BanMoves = "";
+            }
+            else if (BanMoves != "")
             {
                 SendCommand("banmoves " + BanMoves);
                 BanMoves = "";
             }
+            string searchStr = "";
+            if (EngineType != "ucci" && searchMoves != null && searchMoves.Count > 0)
+            {
+                searchStr = " searchmoves " + string.Join(" ", searchMoves);
+            }
             if (time_sec > 0)
             {
-                SendCommand("go movetime " + (int)(time_sec * 1000) + " depth " + depth);
+                SendCommand("go movetime " + (int)(time_sec * 1000) + " depth " + depth + searchStr);
             }
             else
             {
-                SendCommand("go " + "depth " + depth);
+                SendCommand("go " + "depth " + depth + searchStr);
             }
         }
     }

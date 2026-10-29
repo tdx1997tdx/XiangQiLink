@@ -699,6 +699,7 @@ namespace VinXiangQi
         {
             await Task.Run(new Action(() =>
             {
+                CandidatesNewPosition(fen);
                 if (BestMoveList.Count >= 6)
                 {
                     if (BestMoveList[BestMoveList.Count-2] == BestMoveList[BestMoveList.Count - 4] && 
@@ -755,6 +756,7 @@ namespace VinXiangQi
                                     textBox_engine_log.ScrollToCaret();
                                 }
                                 EngineAnalyzeCount++;
+                                CandidateAddBookMove(fen, result.Move, result.Score.ToString(), "开局库");
                                 ReceiveBestMove(result.Move, "", ResultSource.Openbook, fen);
                             }));
                             return;
@@ -803,6 +805,7 @@ namespace VinXiangQi
                                 string ponderMove = "";
                                 if (result.PV.Count >= 2) ponderMove = result.PV[1];
                                 EngineAnalyzeCount++;
+                                CandidateAddBookMove(fen, bestMove, result.Score.ToString(), "云库");
                                 ReceiveBestMove(bestMove, ponderMove, ResultSource.ChessDB, fen);
                             }));
                             return;
@@ -818,7 +821,7 @@ namespace VinXiangQi
                 }
 
                 DisplayStatus("开始引擎计算");
-                Engine.StartAnalyze(fen, Settings.EngineStepTime, Settings.EngineDepth);
+                StartEngineSearchForCandidate(fen);
             }));
         }
        
@@ -952,6 +955,7 @@ namespace VinXiangQi
                 if (compareWithPonder.DiffCount == 0)
                 {
                     DisplayStatus("后台思考命中");
+                    CandidatesPonderHit(fen);
                     Engine.PonderHit();
                 }
                 else
@@ -1115,6 +1119,7 @@ namespace VinXiangQi
                 {
                     BackgroundAnalysisMove = new ChessMove(fromPoint, toPoint);
                 }
+                CandidateOnInfo(infos);
 
                 RenderDisplayBoard();
             }
@@ -1221,6 +1226,7 @@ namespace VinXiangQi
         private void Engine_BestMove_Event(string sourceFen, string bestMove, string ponderMove)
         {
             EngineAnalyzeCount--;
+            bestMove = CandidateOnBestMove(sourceFen, bestMove, ref ponderMove);
             ReceiveBestMove(bestMove, ponderMove, ResultSource.Engine, sourceFen);
         }
 
