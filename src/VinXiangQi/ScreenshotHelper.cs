@@ -192,7 +192,11 @@ namespace VinXiangQi
             IntPtr hbitmap = CreateCompatibleBitmap(hscrdc, windowRect.Width, windowRect.Height);
             IntPtr hmemdc = CreateCompatibleDC(hscrdc);
             SelectObject(hmemdc, hbitmap);
-            PrintWindow(hWnd, hmemdc, 0);
+            // PW_RENDERFULLCONTENT(2)：Chromium/CEF 这类显卡合成的窗口（如天天象棋 PC 版）用 0 只能截到黑屏
+            if (!PrintWindow(hWnd, hmemdc, 2))
+            {
+                PrintWindow(hWnd, hmemdc, 0);
+            }
             Bitmap bmp = Image.FromHbitmap(hbitmap);
             DeleteDC(hscrdc);//删除用过的对象
             DeleteDC(hmemdc);//删除用过的对象
