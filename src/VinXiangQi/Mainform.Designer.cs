@@ -132,7 +132,7 @@
             // 
             this.tableLayoutPanel_main.ColumnCount = 2;
             this.tableLayoutPanel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 520F));
+            this.tableLayoutPanel_main.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 740F));
             this.tableLayoutPanel_main.Controls.Add(this.tableLayoutPanel_detection, 0, 0);
             this.tableLayoutPanel_main.Controls.Add(this.groupBox_engine_settings, 1, 0);
             this.tableLayoutPanel_main.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -907,7 +907,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 750);
+            this.ClientSize = new System.Drawing.Size(1360, 750);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.tableLayoutPanel_main);
             this.Controls.Add(this.menuStrip1);
