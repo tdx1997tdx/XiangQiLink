@@ -848,6 +848,7 @@ namespace VinXiangQi
                 ExpectedSelfGoBoard = null;
                 ExpectedMove = "";
                 RenderDisplayBoard();
+                LastMoveWasMine = false;
                 DisplayStatus("从对手开始，跳过当前局面");
                 return;
             }
@@ -895,6 +896,7 @@ namespace VinXiangQi
                     {
                         InvalidCount = 0;
                         LastBoard = (string[,])CurrentBoard.Clone();
+                        LastMoveWasMine = true;
                         DisplayStatus("己方棋子变化，跳过分析");
                         ExpectedMove = "";
                     }
@@ -910,6 +912,7 @@ namespace VinXiangQi
                 LastBoard = (string[,])CurrentBoard.Clone();
                 ExpectedMove = "";
                 RenderDisplayBoard();
+                LastMoveWasMine = true;
                 DisplayStatus("和预期棋盘一样，跳过");
                 return;
             }
@@ -947,6 +950,7 @@ namespace VinXiangQi
                 return;
             }
 
+            LastMoveWasMine = false;
             string fen = Utils.BoardToFen(CurrentBoard,RedSide ? "w" : "b",RedSide ? "w" : "b");
             if (BackgroundAnalyzing)
             {

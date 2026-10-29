@@ -257,6 +257,48 @@ namespace VinXiangQi
             StartEngineSearchForCandidate(fen);
         }
 
+        // 最近一次确认的棋盘变化是不是我方走的（是的话现在轮到对方）
+        bool LastMoveWasMine = false;
+
+        // 「立即出招」在引擎空闲时：中局一键连线默认等对方先走，轮到我方时会一直干等，这里直接按轮到我方开算
+        void AnalyzeCurrentBoardAsMyTurn()
+        {
+            // 自动走棋时 ExpectedMove 非空 = 已经替我方点了这步、还在等画面确认
+            if (LastMoveWasMine || (Settings.AutoGo && ExpectedMove != ""))
+            {
+                DisplayStatus("立即出招：我方刚走完，现在轮到对方");
+                return;
+            }
+            string[,] board = LastBoard;
+            if (board == null || !Utils.CheckBoardValid(board, RedSide))
+            {
+                DisplayStatus("立即出招：还没识别到完整的棋盘");
+                return;
+            }
+            board = (string[,])board.Clone();
+            string fen = Utils.BoardToFen(board, RedSide ? "w" : "b", RedSide ? "w" : "b");
+            try
+            {
+                if (XiangQiRules.LegalMoves(fen).Count == 0)
+                {
+                    DisplayStatus("立即出招：我方已经没有合法着法");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log("立即出招：局面解析失败 " + fen + " " + ex.Message);
+                DisplayStatus("立即出招：局面解析失败");
+                return;
+            }
+            LogHelper.Log("立即出招：引擎空闲，按轮到我方计算 " + fen);
+            TurnToOpponent = false;
+            EngineAnalyzingBoard = board;
+            EngineAnalyzeCount++;
+            DisplayStatus("立即出招：按轮到我方开始计算");
+            StartAnalyze(fen);
+        }
+
         private void listView_candidates_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SuppressCandidateSelectEvent) return;

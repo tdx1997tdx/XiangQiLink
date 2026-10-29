@@ -1079,6 +1079,12 @@ namespace VinXiangQi
 
         private void button_go_immediately_Click(object sender, EventArgs e)
         {
+            // 引擎正在算：叫停，马上用当前结果出招；引擎闲着：把当前棋盘当作轮到我方，立即开始算
+            if (Engine != null && Engine.AnalyzeQueue.Count == 0 && DetectEnabled)
+            {
+                AnalyzeCurrentBoardAsMyTurn();
+                return;
+            }
             Engine.StopAnalyze();
         }
 
