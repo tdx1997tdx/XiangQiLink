@@ -75,6 +75,7 @@
             this.comboBox_solution = new System.Windows.Forms.ComboBox();
             this.button_save_as_solution = new System.Windows.Forms.Button();
             this.button_get_hwnd = new System.Windows.Forms.Button();
+            this.button_delete_solution = new System.Windows.Forms.Button();
             this.button_screenshot = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -703,6 +704,7 @@
             this.groupBox3.Controls.Add(this.comboBox_solution);
             this.groupBox3.Controls.Add(this.button_save_as_solution);
             this.groupBox3.Controls.Add(this.button_get_hwnd);
+            this.groupBox3.Controls.Add(this.button_delete_solution);
             this.groupBox3.Controls.Add(this.button_screenshot);
             this.groupBox3.Location = new System.Drawing.Point(528, 24);
             this.groupBox3.Name = "groupBox3";
@@ -727,7 +729,7 @@
             this.comboBox_solution.FormattingEnabled = true;
             this.comboBox_solution.Location = new System.Drawing.Point(16, 24);
             this.comboBox_solution.Name = "comboBox_solution";
-            this.comboBox_solution.Size = new System.Drawing.Size(157, 23);
+            this.comboBox_solution.Size = new System.Drawing.Size(110, 23);
             this.comboBox_solution.TabIndex = 14;
             this.comboBox_solution.TabStop = false;
             this.comboBox_solution.SelectedIndexChanged += new System.EventHandler(this.comboBox_solution_SelectedIndexChanged);
@@ -742,6 +744,17 @@
             this.button_save_as_solution.Text = "保存当前方案";
             this.button_save_as_solution.UseVisualStyleBackColor = true;
             this.button_save_as_solution.Click += new System.EventHandler(this.button_save_as_solution_Click);
+            // 
+            // button_delete_solution
+            // 
+            this.button_delete_solution.Location = new System.Drawing.Point(130, 23);
+            this.button_delete_solution.Name = "button_delete_solution";
+            this.button_delete_solution.Size = new System.Drawing.Size(43, 25);
+            this.button_delete_solution.TabIndex = 29;
+            this.button_delete_solution.TabStop = false;
+            this.button_delete_solution.Text = "删除";
+            this.button_delete_solution.UseVisualStyleBackColor = true;
+            this.button_delete_solution.Click += new System.EventHandler(this.button_delete_solution_Click);
             // 
             // button_get_hwnd
             // 
@@ -1115,6 +1128,7 @@
         private System.Windows.Forms.ToolStripStatusLabel label_status;
         private System.Windows.Forms.OpenFileDialog openFileDialog_engine;
         private System.Windows.Forms.Button button_get_hwnd;
+        private System.Windows.Forms.Button button_delete_solution;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_pad;
         private System.Windows.Forms.CheckBox checkBox_universal_mode;
         private System.Windows.Forms.CheckBox checkBox_debug;

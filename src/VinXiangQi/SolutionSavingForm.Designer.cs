@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SolutionSavingForm));
             this.textBox_name = new System.Windows.Forms.TextBox();
+            this.windowFinder = new VinXiangQi.WindowFinderBox();
+            this.label_finder = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_game_title = new System.Windows.Forms.TextBox();
@@ -42,9 +44,24 @@
             this.button_save_settings = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
+            // windowFinder
+            // 
+            this.windowFinder.Location = new System.Drawing.Point(26, 14);
+            this.windowFinder.Name = "windowFinder";
+            this.windowFinder.Size = new System.Drawing.Size(64, 56);
+            this.windowFinder.TabIndex = 20;
+            // 
+            // label_finder
+            // 
+            this.label_finder.Location = new System.Drawing.Point(101, 14);
+            this.label_finder.Name = "label_finder";
+            this.label_finder.Size = new System.Drawing.Size(270, 56);
+            this.label_finder.TabIndex = 21;
+            this.label_finder.Text = "按住左边的瞄准器，拖到游戏窗口上（出现红框）再松开，自动填写下面的窗口信息";
+            // 
             // textBox_name
             // 
-            this.textBox_name.Location = new System.Drawing.Point(104, 30);
+            this.textBox_name.Location = new System.Drawing.Point(104, 102);
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(241, 25);
             this.textBox_name.TabIndex = 0;
@@ -52,7 +69,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 33);
+            this.label1.Location = new System.Drawing.Point(38, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 15);
             this.label1.TabIndex = 1;
@@ -61,7 +78,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 80);
+            this.label2.Location = new System.Drawing.Point(23, 152);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 15);
             this.label2.TabIndex = 3;
@@ -69,7 +86,7 @@
             // 
             // textBox_game_title
             // 
-            this.textBox_game_title.Location = new System.Drawing.Point(104, 77);
+            this.textBox_game_title.Location = new System.Drawing.Point(104, 149);
             this.textBox_game_title.Name = "textBox_game_title";
             this.textBox_game_title.Size = new System.Drawing.Size(241, 25);
             this.textBox_game_title.TabIndex = 2;
@@ -77,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 111);
+            this.label3.Location = new System.Drawing.Point(38, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 15);
             this.label3.TabIndex = 5;
@@ -85,7 +102,7 @@
             // 
             // textBox_game_class
             // 
-            this.textBox_game_class.Location = new System.Drawing.Point(104, 108);
+            this.textBox_game_class.Location = new System.Drawing.Point(104, 180);
             this.textBox_game_class.Name = "textBox_game_class";
             this.textBox_game_class.Size = new System.Drawing.Size(241, 25);
             this.textBox_game_class.TabIndex = 4;
@@ -93,7 +110,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 142);
+            this.label4.Location = new System.Drawing.Point(23, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 15);
             this.label4.TabIndex = 7;
@@ -101,7 +118,7 @@
             // 
             // textBox_click_title
             // 
-            this.textBox_click_title.Location = new System.Drawing.Point(104, 139);
+            this.textBox_click_title.Location = new System.Drawing.Point(104, 211);
             this.textBox_click_title.Name = "textBox_click_title";
             this.textBox_click_title.Size = new System.Drawing.Size(241, 25);
             this.textBox_click_title.TabIndex = 6;
@@ -109,7 +126,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(38, 173);
+            this.label5.Location = new System.Drawing.Point(38, 245);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 15);
             this.label5.TabIndex = 9;
@@ -117,14 +134,14 @@
             // 
             // textBox_click_class
             // 
-            this.textBox_click_class.Location = new System.Drawing.Point(104, 170);
+            this.textBox_click_class.Location = new System.Drawing.Point(104, 242);
             this.textBox_click_class.Name = "textBox_click_class";
             this.textBox_click_class.Size = new System.Drawing.Size(241, 25);
             this.textBox_click_class.TabIndex = 8;
             // 
             // button_save_settings
             // 
-            this.button_save_settings.Location = new System.Drawing.Point(140, 216);
+            this.button_save_settings.Location = new System.Drawing.Point(140, 288);
             this.button_save_settings.Name = "button_save_settings";
             this.button_save_settings.Size = new System.Drawing.Size(101, 34);
             this.button_save_settings.TabIndex = 10;
@@ -136,8 +153,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 262);
+            this.ClientSize = new System.Drawing.Size(397, 334);
             this.Controls.Add(this.button_save_settings);
+            this.Controls.Add(this.windowFinder);
+            this.Controls.Add(this.label_finder);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox_click_class);
             this.Controls.Add(this.label4);
@@ -160,6 +179,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox_name;
+        private VinXiangQi.WindowFinderBox windowFinder;
+        private System.Windows.Forms.Label label_finder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_game_title;

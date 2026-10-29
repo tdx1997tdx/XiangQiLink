@@ -24,6 +24,7 @@ namespace VinXiangQi
         public Mainform()
         {
             InitializeComponent();
+            InitWindowPicker();
         }
 
         // 程序版本
@@ -930,12 +931,6 @@ namespace VinXiangQi
             SaveSettings();
         }
 
-        private void button_get_hwnd_Click(object sender, EventArgs e)
-        {
-            button_stop_detection_Click(sender, e);
-            GetHandle();
-        }
-
         private void numericUpDown_scale_factor_ValueChanged(object sender, EventArgs e)
         {
             Settings.ScaleFactor = 1.0f / (float)numericUpDown_scale_factor.Value;
@@ -1095,10 +1090,7 @@ namespace VinXiangQi
 
         private void button_save_as_solution_Click(object sender, EventArgs e)
         {
-            SolutionSavingForm ssf = new SolutionSavingForm();
-            ssf.StartPosition = FormStartPosition.CenterParent;
-            ssf.ShowDialog();
-            InitSolutions();
+            ShowSolutionDialog(false);
         }
 
         private void ToolStripMenuItem_about_Click(object sender, EventArgs e)
