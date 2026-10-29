@@ -16,6 +16,8 @@ namespace VinXiangQi
         public int StopScore = 2000;
         public int EngineDepth = 200;
         public int ThreadCount = 4;
+        // 引擎哈希表大小（MB），启动引擎时作为 Hash 选项发送
+        public int HashSize = 1024;
         public int DetectionConfirmCount = 1;
         public int DetectionInterval = 550;
         public bool KeepDetecting = false;

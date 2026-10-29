@@ -43,6 +43,9 @@
             this.checkBox_auto_scroll = new System.Windows.Forms.CheckBox();
             this.groupBox_engine_basic = new System.Windows.Forms.GroupBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.groupBox_hash = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_hash = new System.Windows.Forms.NumericUpDown();
+            this.button_engine_options = new System.Windows.Forms.Button();
             this.numericUpDown_engine_depth = new System.Windows.Forms.NumericUpDown();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.numericUpDown_thread_count = new System.Windows.Forms.NumericUpDown();
@@ -112,6 +115,8 @@
             this.tableLayoutPanel_engine.SuspendLayout();
             this.groupBox_engine_basic.SuspendLayout();
             this.groupBox10.SuspendLayout();
+            this.groupBox_hash.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_hash)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_engine_depth)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_thread_count)).BeginInit();
@@ -263,6 +268,8 @@
             // groupBox_engine_basic
             // 
             this.groupBox_engine_basic.Controls.Add(this.groupBox10);
+            this.groupBox_engine_basic.Controls.Add(this.groupBox_hash);
+            this.groupBox_engine_basic.Controls.Add(this.button_engine_options);
             this.groupBox_engine_basic.Controls.Add(this.groupBox7);
             this.groupBox_engine_basic.Controls.Add(this.groupBox6);
             this.groupBox_engine_basic.Controls.Add(this.label_engine);
@@ -275,10 +282,60 @@
             this.groupBox_engine_basic.TabStop = false;
             this.groupBox_engine_basic.Text = "引擎设置";
             // 
+            // groupBox_hash
+            // 
+            this.groupBox_hash.Controls.Add(this.numericUpDown_hash);
+            this.groupBox_hash.Location = new System.Drawing.Point(608, 15);
+            this.groupBox_hash.Name = "groupBox_hash";
+            this.groupBox_hash.Size = new System.Drawing.Size(108, 56);
+            this.groupBox_hash.TabIndex = 35;
+            this.groupBox_hash.TabStop = false;
+            this.groupBox_hash.Text = "哈希表(MB)";
+            // 
+            // numericUpDown_hash
+            // 
+            this.numericUpDown_hash.Increment = new decimal(new int[] {
+            256,
+            0,
+            0,
+            0});
+            this.numericUpDown_hash.Location = new System.Drawing.Point(6, 20);
+            this.numericUpDown_hash.Maximum = new decimal(new int[] {
+            8192,
+            0,
+            0,
+            0});
+            this.numericUpDown_hash.Minimum = new decimal(new int[] {
+            16,
+            0,
+            0,
+            0});
+            this.numericUpDown_hash.Name = "numericUpDown_hash";
+            this.numericUpDown_hash.Size = new System.Drawing.Size(96, 25);
+            this.numericUpDown_hash.TabIndex = 0;
+            this.numericUpDown_hash.TabStop = false;
+            this.numericUpDown_hash.Value = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.numericUpDown_hash.ValueChanged += new System.EventHandler(this.numericUpDown_hash_ValueChanged);
+            // 
+            // button_engine_options
+            // 
+            this.button_engine_options.Location = new System.Drawing.Point(210, 33);
+            this.button_engine_options.Name = "button_engine_options";
+            this.button_engine_options.Size = new System.Drawing.Size(86, 25);
+            this.button_engine_options.TabIndex = 36;
+            this.button_engine_options.TabStop = false;
+            this.button_engine_options.Text = "更多参数";
+            this.button_engine_options.UseVisualStyleBackColor = true;
+            this.button_engine_options.Click += new System.EventHandler(this.button_engine_options_Click);
+            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.numericUpDown_engine_depth);
-            this.groupBox10.Location = new System.Drawing.Point(461, 15);
+            this.groupBox10.Location = new System.Drawing.Point(402, 15);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(96, 56);
             this.groupBox10.TabIndex = 34;
@@ -312,7 +369,7 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.numericUpDown_thread_count);
-            this.groupBox7.Location = new System.Drawing.Point(563, 15);
+            this.groupBox7.Location = new System.Drawing.Point(504, 15);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(98, 56);
             this.groupBox7.TabIndex = 34;
@@ -346,7 +403,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.numericUpDown_step_time);
-            this.groupBox6.Location = new System.Drawing.Point(349, 15);
+            this.groupBox6.Location = new System.Drawing.Point(300, 15);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(96, 56);
             this.groupBox6.TabIndex = 33;
@@ -386,7 +443,7 @@
             // label_engine
             // 
             this.label_engine.AutoSize = true;
-            this.label_engine.Location = new System.Drawing.Point(26, 37);
+            this.label_engine.Location = new System.Drawing.Point(8, 37);
             this.label_engine.Name = "label_engine";
             this.label_engine.Size = new System.Drawing.Size(45, 15);
             this.label_engine.TabIndex = 4;
@@ -395,9 +452,9 @@
             // comboBox_engine
             // 
             this.comboBox_engine.FormattingEnabled = true;
-            this.comboBox_engine.Location = new System.Drawing.Point(77, 34);
+            this.comboBox_engine.Location = new System.Drawing.Point(56, 34);
             this.comboBox_engine.Name = "comboBox_engine";
-            this.comboBox_engine.Size = new System.Drawing.Size(247, 23);
+            this.comboBox_engine.Size = new System.Drawing.Size(150, 23);
             this.comboBox_engine.TabIndex = 1;
             this.comboBox_engine.TabStop = false;
             this.comboBox_engine.SelectedIndexChanged += new System.EventHandler(this.comboBox_engine_SelectedIndexChanged);
@@ -1005,6 +1062,8 @@
             this.groupBox_engine_basic.ResumeLayout(false);
             this.groupBox_engine_basic.PerformLayout();
             this.groupBox10.ResumeLayout(false);
+            this.groupBox_hash.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_hash)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_engine_depth)).EndInit();
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_thread_count)).EndInit();
@@ -1097,6 +1156,9 @@
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_engine_management;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_openbook_management;
         private System.Windows.Forms.Button button_force_change;
+        private System.Windows.Forms.GroupBox groupBox_hash;
+        private System.Windows.Forms.NumericUpDown numericUpDown_hash;
+        private System.Windows.Forms.Button button_engine_options;
         private System.Windows.Forms.ListView listView_candidates;
         private System.Windows.Forms.ColumnHeader columnHeader_cand_no;
         private System.Windows.Forms.ColumnHeader columnHeader_cand_move;

@@ -307,6 +307,8 @@ namespace VinXiangQi
             }
             // 线程数
             numericUpDown_thread_count.Value = Settings.ThreadCount;
+            // 哈希表
+            numericUpDown_hash.Value = Math.Max(numericUpDown_hash.Minimum, Math.Min(numericUpDown_hash.Maximum, Settings.HashSize));
             // 步时
             numericUpDown_step_time.Value = (decimal)Settings.EngineStepTime;
             // 思考深度
@@ -370,6 +372,7 @@ namespace VinXiangQi
                     {
                         configs.Add("Threads", Settings.ThreadCount.ToString());
                     }
+                    configs["Hash"] = Settings.HashSize.ToString();
                     Engine = new EngineHelper(engineSettings.ExePath, configs);
                     Engine.BestMoveEvent += Engine_BestMove_Event;
                     Engine.InfoEvent += Engine_InfoEvent;

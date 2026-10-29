@@ -110,6 +110,10 @@
     <Compile Include="ChessDBHelper.cs" />
     <Compile Include="XiangQiGame.cs" />
     <Compile Include="XiangQiRules.cs" />
+    <Compile Include="Mainform.EngineOptions.cs">
+      <DependentUpon>Mainform.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mainform.Bianzhao.cs">
       <DependentUpon>Mainform.cs</DependentUpon>
       <SubType>Form</SubType>
