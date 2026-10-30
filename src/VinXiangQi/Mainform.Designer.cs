@@ -729,7 +729,7 @@
             this.comboBox_solution.FormattingEnabled = true;
             this.comboBox_solution.Location = new System.Drawing.Point(16, 24);
             this.comboBox_solution.Name = "comboBox_solution";
-            this.comboBox_solution.Size = new System.Drawing.Size(110, 23);
+            this.comboBox_solution.Size = new System.Drawing.Size(100, 23);
             this.comboBox_solution.TabIndex = 14;
             this.comboBox_solution.TabStop = false;
             this.comboBox_solution.SelectedIndexChanged += new System.EventHandler(this.comboBox_solution_SelectedIndexChanged);
@@ -747,9 +747,9 @@
             // 
             // button_delete_solution
             // 
-            this.button_delete_solution.Location = new System.Drawing.Point(130, 23);
+            this.button_delete_solution.Location = new System.Drawing.Point(120, 23);
             this.button_delete_solution.Name = "button_delete_solution";
-            this.button_delete_solution.Size = new System.Drawing.Size(43, 25);
+            this.button_delete_solution.Size = new System.Drawing.Size(53, 25);
             this.button_delete_solution.TabIndex = 29;
             this.button_delete_solution.TabStop = false;
             this.button_delete_solution.Text = "删除";
