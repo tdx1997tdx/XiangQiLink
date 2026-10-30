@@ -28,7 +28,7 @@ namespace VinXiangQi
         }
 
         // 程序版本
-        public static string Version = "1.4.8";
+        public static string Version = "1.4.9";
 
         // 用于截图的窗口句柄
         public static IntPtr GameHandle = IntPtr.Zero;
